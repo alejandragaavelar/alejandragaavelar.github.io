@@ -57,7 +57,7 @@ header {
 }
 
 body > * {
-  background-color: red;
+  background-color: rgb(31, 179, 61);
   padding: 1%;
 }
 
