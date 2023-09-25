@@ -30,35 +30,48 @@ body {
     border-radius: 0 0 1.5em 1.5em;
   }
   
-  .article img {
+  article img {
     max-height: 100%;
     float: right;
   }
 
-  .card header, .card footer {
-    height: 50em; 
-    padding: 10em;
+  .header, .footer {
+    height: 50px; 
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
-  .header h2, .article p {
+  .h2, .p {
     margin: 0;
   }
 
-  .article {
-    height: 120em;
-    background-color: rgba(255,255,255,0.5);
-    padding-left: 10px;
-    color: antiquewhite;
+  article {
+    height: 120px;
+    background-color: rgba(0,0,0,.3);
   }
 
   .h2 {
-    font-size: 20em;
-    float: center;
-    line-height: 10em;
+    font-size: 20px;
+    line-height: 50px;
   }
-  .p {
-    font-size: 15em;
-    line-height: 15em;
+  .footer p {
+    font-size: 15px;
+    line-height: 45px;
+  }
+  article p {
+    padding-left: 5px;
+    color:antiquewhite;
+  }
+  .alescard {
+    background-color: lightsteelblue;
+    width: 35em;
+    height: 22em;
+    margin: 5em auto;
+    border: 0.2em solid black;
+    border-radius: 1.5em;
+    font-family:Georgia, 'Times New Roman', Times, serif
   }
 
 
