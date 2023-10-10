@@ -1,0 +1,40 @@
+
+html {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+body {
+    margin: 0;
+    background-image: url(/img/spongebobstressed.JPG);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100%; 
+}
+.scoreboard {
+    background: fixed;
+    height: 75px;
+    width: 125px;
+    background-color: rgb(230, 230, 155);
+    opacity: 0.25;
+}
+h3 {
+    position: absolute;
+    font-size: 20px;
+    top: 4px;
+    left: 12px;
+    text-align: center;
+    color: black;
+    text-shadow: 1px 1px 1px whitesmoke;
+    opacity: 3.0;
+}
+
+h1 {
+    position: absolute;
+    font-size: 30px;
+    bottom: 4px;
+    right: 12px;
+    text-align: right;
+    color: orange;
+    text-shadow: 1px 1px 1px black
+}
+
