@@ -21,6 +21,7 @@ body {
     margin: 0 auto;
     padding: 0 20px;
     max-width: 980px;
+    
 
   }
   
@@ -55,21 +56,25 @@ body {
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: 1px 1px;
+    grid-template-columns: 1fr 1fr;
   
+   
   }
 
   .feature {
       width: 200px;
+      float: left;
+    
+  }
+
+    .grid {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    
+  }
     
 
-  }
-
-  article, aside {
-    display: flex;
-    flex-direction: column;
-   
-  }
+  
 
   
 
