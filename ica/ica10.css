@@ -1,3 +1,15 @@
+body {
+    background-color: lavender;
+    
+}
+
+p {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 2vw;
+    text-align: center;
+}
+
+
 button {
     font-family: "helvetica neue" helveitca, sans-serif;
     letter-spacing: 1px;
@@ -15,3 +27,4 @@ button {
     transform: translate(150%, 150%);
 
 }
+
