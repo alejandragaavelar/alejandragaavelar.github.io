@@ -7,24 +7,27 @@
     <link rel="stylesheet" href="ica10.css">
 </head>
 <body>
-    <p>Very Important Question</p>
+    <p>Very Important Stuff Happening</p>
 
     
-    <button id="Button">Is this the Krusty Krab?</button> 
-    <h1 id="text"></h1>
-    <b id="effect"></b>
+    <button id="Button">Woah what's this?</button>
+     
+    
 
     <script> 
-        document.getElementById("Button").addEventListener("click", function(){ 
-        document.getElementById("text").innerText = "No, this is Patrick.";
-        document.getElementById("TextHover");
-        addEventListener("MouseHover", RespondMouseOut); 
-        function RespondMouseOut() { 
-            document.getElementById("effect").innerHTML += 
-                      "No, this is Patrick" ; 
+        const btn = document.querySelector("button");
+
+         function random(number) {
+         return Math.floor(Math.random() * (number + 1));
         }
-    }); 
-        </script> 
+
+    function changeBackground() {
+    const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+     document.body.style.backgroundColor = rndCol;
+    }
+
+    btn.addEventListener("click", changeBackground);
+    </script> 
        
 </body>
 </html>

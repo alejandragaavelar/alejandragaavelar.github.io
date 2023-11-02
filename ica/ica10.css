@@ -10,7 +10,7 @@ p {
 }
 
 
-button {
+button, #press {
     font-family: "helvetica neue" helveitca, sans-serif;
     letter-spacing: 1px;
     text-transform: uppercase;
