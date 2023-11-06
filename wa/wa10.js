@@ -2,7 +2,7 @@ const customName = document.getElementById('customname');
 const randomize = document.querySelector('.randomize');
 const story = document.querySelector('.story');
 
-const storyText = "It was sunny outside, so :insertx: went for a stroll. When they got to :inserty:, they stared into space for a few moments, then :insertz:. Bob witnessed the events, but was not surprised — :insertx: is just a silly lad.";
+const storyText = "It was a stormy day, so :insertx: grabbed and umbrella and went out. When they got to :inserty:, they stared into space for a few moments, then :insertz:. Bob witnessed the events, but then remembered that :insertx: is just a silly lad.";
 const insertX = [
     "Spider-Man",
     "Princess Peach",
