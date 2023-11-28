@@ -1,4 +1,7 @@
 const newBtn = document.querySelector('#js-new-quote').addEventListener('click', getQuote);
+const answerBtn = document.querySelector('#js-tweet').addEventListener('click', testFunction);
+let answer = "";
+
 
 
 
@@ -17,6 +20,8 @@ async function getQuote() {
         const json = await response.json();
         //console.log(json('question'));
         displayQuote(json['question'])
+        
+        answer = json['answer']
 
     }
     catch(err) {
@@ -28,5 +33,17 @@ function displayQuote(question) {
     const questionTxt = document.querySelector('#js-quote-text');
     questionTxt.textContent = question;
 }
+
+function displayAnswer(answer){
+    const answerTxt = document.querySelector('#js-answer-text');
+    answerTxt.textContent = answer;
+}
+
+function textFunction() {
+    console.log("Answer button clicked");
+
+
+}
+
 
 getQuote();
