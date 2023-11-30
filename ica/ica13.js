@@ -29,16 +29,13 @@ class Ball {
     this.color = color;
     this.size = size;
   }
-
   draw() {
-  ctx.beginPath();
-  ctx.fillStyle = this.color;
-  ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
-  ctx.fill();
-}
-}
-
-
+    ctx.beginPath();
+    ctx.fillStyle = this.color;
+    ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+    ctx.fill();
+  }
+  
 
 
   update() {
@@ -60,9 +57,9 @@ class Ball {
   
     this.x += this.velX;
     this.y += this.velY;
-  }
-
   
+  }
+}   
 
 const balls = [];
 
