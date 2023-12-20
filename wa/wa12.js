@@ -1,73 +1,29 @@
-import React, { useState } from 'react'
-import { Layout, Button, List } from 'antd'
-import { DownloadOutlined } from '@ant-design/icons'
+// Powered by Quotable
+// https://github.com/lukePeavey/quotable
 
-const config = {
-  apiUrl: 'https://type.fit/api/quotes',
-  repoUrl: 'https://github.com/ssokurenko/quotes-react-app'
-}
+document.addEventListener("DOMContentLoaded", () => {
+  // DOM elements
+  const button = document.querySelector("button");
+  const quote = document.querySelector("blockquote p");
+  const cite = document.querySelector("blockquote cite");
 
-const { Header, Content } = Layout
-
-function App() {
-  const [quotes, setQuotes] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const Quote = ({ text, author }) => {
-    return (
-      <span>
-        <strong>{text}</strong> &nbsp; <span>{author}</span>
-      </span>
-    )
+  async function updateQuote() {
+    // Fetch a random quote from the Quotable API
+    const response = await fetch("https://api.quotable.io/random");
+    const data = await response.json();
+    if (response.ok) {
+      // Update DOM elements
+      quote.textContent = data.content;
+      cite.textContent = data.author;
+    } else {
+      quote.textContent = "An error occured";
+      console.log(data);
+    }
   }
 
-  const getQuotes = () => {
-    setQuotes([])
-    setIsLoading(true)
-    fetch(config.apiUrl)
-      .then(function (response) {
-        return response.json()
-      })
-      .then((data) => {
-        setQuotes(data)
-        setIsLoading(false)
-      })
-      .catch(() => {
-        setIsLoading(false)
-      })
-  }
-  return (
-    <Layout>
-      <Header>
-        <div className="container">
-          <span className="site-logo">Inspirational Quotes</span>
-        </div>
-      </Header>
-      <Content className="container">
-        <List
-          size="small"
-          loading={isLoading}
-          header={
-            <Button
-              onClick={() => getQuotes()}
-              type="primary"
-              icon={<DownloadOutlined />}
-              disabled={isLoading}
-              size="large">
-              Fetch Quotes
-            </Button>
-          }
-          footer={<a href={config.repoUrl}>Fork on Github</a>}
-          bordered
-          dataSource={quotes}
-          renderItem={(quote) => (
-            <List.Item>
-              <Quote text={quote.text} author={quote.author} />
-            </List.Item>
-          )}
-        />
-      </Content>
-    </Layout>
-  )
-}
+  // Attach an event listener to the `button`
+  button.addEventListener("click", updateQuote);
 
-export default App
+  // call updateQuote once when page loads
+  updateQuote();
+});
