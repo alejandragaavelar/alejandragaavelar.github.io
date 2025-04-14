@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alejandra Arteaga Avelar</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        :root {
+            --lavender: #b1a1e0;
+            --light-blue: #8dcce6;
+            --dusty-rose: #bc7e91;
+            --dark-bg: #b6aac1;
+            --accent: #a2a2e2;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: white;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        
+
+        /* Header Styles */
+        header {
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: white;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-blue));
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover::after {
+            transform: translateX(0);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-direction: row; /* Ensure menu goes from left to right */
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--neon-green);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: right;
+        }
+
+        nav ul li a:hover {
+            color: var(--neon-green);
+        }
+
+        nav ul li a:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 0 10px rgba(0, 184, 255, 0.5);
+        }
+
+        .hero h1 span {
+            display: block;
+            color: var(--neon-pink);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-cta {
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-5px);
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .hero-cta:hover::before {
+            opacity: 1;
+        }
+
+        /* 3D Objects */
+        .three-d-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .gallery h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--neon-blue);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            height: 300px;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item-overlay h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .gallery-item-overlay p {
+            color: var(--neon-green);
+            font-size: 0.9rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            position: relative;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-img::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue));
+            border-radius: 20px;
+            z-index: 0;
+        }
+
+        .about-content {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .about-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            position: relative;
+            display: inline-block;
+        }
+
+        .about-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100px;
+            height: 5px;
+            background: var(--neon-pink);
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        /*.skill-tag {
+            background-color: rgba(255, 97, 216, 0.2);
+            color: var(--neon-pink);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--neon-pink);
+        } */
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 2rem;
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .contact h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--neon-green);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--neon-blue);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: white;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--neon-blue);
+        }
+
+        .form-group label {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            transition: transform 0.3s ease, color 0.3s ease;
+            pointer-events: none;
+        }
+
+        .form-group input:focus + label,
+        .form-group textarea:focus + label,
+        .form-group input:not(:placeholder-shown) + label,
+        .form-group textarea:not(:placeholder-shown) + label {
+            transform: translateY(-1.5rem) scale(0.8);
+            color: var(--neon-blue);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-green));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--neon-pink);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Animation Classes */
+        .glitch {
+            animation: glitch 1s linear infinite;
+        }
+
+        @keyframes glitch {
+            2%, 64% {
+                transform: translate(2px, 0) skew(0deg);
+            }
+            4%, 60% {
+                transform: translate(-2px, 0) skew(0deg);
+            }
+            62% {
+                transform: translate(0, 0) skew(5deg);
+            }
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: row; /* Ensure menu stays horizontal even on mobile */
+                gap: 1rem;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .about {
+                flex-direction: column;
+            }
+
+            .about-img::before {
+                display: none;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--neon-pink), var(--neon-blue));
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(var(--neon-blue), var(--neon-pink));
+        }
+
+        /* Grain Effect */
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0.1;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        /* Cursor CSS */
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--neon-pink);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease, border-color 0.3s ease, opacity 0.3s ease;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            will-change: transform;
+            left: 50%;  /* Set initial position to avoid flashing */
+            top: 50%;   /* Set initial position to avoid flashing */
+}
+
+        .cursor-follower {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 97, 216, 0.2);
+            border-radius: 50%;
+            position: relative;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 9998;
+            left: 100%;  /* Set initial position to avoid flashing */
+            top: 100%;   /* Set initial position to avoid flashing */
+        }
+
+        /* Add these new classes for interactive states */
+        .cursor.cursor-down {
+            transform: translate(-50%, -50%) scale(0.7);
+        }
+
+        .cursor.cursor-hover {
+            transform: translate(-50%, -50%) scale(1.5);
+            border-color: var(--neon-green);
+        }
+
+        .cursor-follower.cursor-down {
+            transform: translate(-50%, -50%) scale(0.7);
+        }
+
+        .cursor-follower.cursor-hover {
+            transform: translate(-50%, -50%) scale(1.5);
+            background-color: rgba(57, 255, 20, 0.1);
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Grain Effect -->
+    <div class="grain"></div>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo"></a>
+        <nav>
+            <ul>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="name">Alejandra Arteaga Avelar</div>
+        <h1 class="glitch">Motion Design<span>&</span>3D Design</h1>
+        <!--<p>Motion design & 3D graphics that capture attention and inspire wonder.</p-->
+        <!--<a href="#work" class="hero-cta">View My Work</a>
+        <div class="three-d-container" id="hero-canvas"></div>--!>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="work">
+        <h2>Selected Work</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="/Images/robot-image.png" alt="3D Modeling Project">
+                <div class="gallery-item-overlay">
+                    <h3>3D Modeled Robot</h3>
+                    <p>3D Modeling • 2021</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="/Images/Name Text Effect.png" alt="Name Effect">
+                <div class="gallery-item-overlay">
+                    <h3>Name Animation</h3>
+                    <p>Motion Graphics • 2025</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="/Images/3dcan.png" alt="3D Rendering Project">
+                <div class="gallery-item-overlay">
+                    <h3>3D Rendered Can</h3>
+                    <p>3D Modeling • 2024</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="/Images/textproject1.png" alt="Lyric Design Booklet">
+                <div class="gallery-item-overlay">
+                    <h3>Lyric Design Booklet</h3>
+                    <p>Graphic Design • 2024</p>
+                </div>
+            </div>
+            <!--<div class="gallery-item">
+                <img src="/api/placeholder/400/320" alt="Environmental Design">
+                <div class="gallery-item-overlay">
+                    <h3>Ethereal Spaces</h3>
+                    <p>Environmental Design • 2023</p>
+                </div>-->
+            </div>
+            <!--<div class="gallery-item">
+                <img src="/api/placeholder/400/320" alt="Logo Animation">
+                <div class="gallery-item-overlay">
+                    <h3>Brand in Motion</h3>
+                    <p>Logo Animation • 2022</p>
+                </div>-->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-img">
+            <img src="/Images/me.jpg" alt="">
+        </div>
+        <div class="about-content">
+            <h2>About Me</h2>
+            <p>Hello there! I am Alejandra Arteaga Avelar. As a tech-driven designer, my specialties are in 3D modeling and motion design/animation.</p>
+            <p>I am currently a junior studying at University of Colorado at Boulder in the College of Engineering, where I am studying Creative</p>
+            <p>Technology and Design. I am interested in the intersection of psychology and design, and how visual elements shape human perception.</p>
+            <div class="skills">
+                <span class="skill-tag">3D Modeling</span>
+                <span class="skill-tag">Motion Graphics</span>
+                <span class="skill-tag">Character Animation</span>
+                <span class="skill-tag">VFX</span>
+                <span class="skill-tag">Graphic Design</span>
+                <!--<span class="skill-tag">AR/VR Design</span>
+                <span class="skill-tag">Cinema 4D</span>
+                <span class="skill-tag">Blender</span>-->
+                <span class="skill-tag">After Effects</span>
+                <!--<span class="skill-tag">Houdini</span>-->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>agarteagaavelar@gmail.com</p>
+                </div>
+                <!--<div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <p>+1 (555) 123-4567</p>
+                </div>-->
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Boulder, CO</p>
+                </div>
+            </div>
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder=" ">
+                    <label for="name">Your Name</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder=" ">
+                    <label for="email">Your Email</label>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" placeholder=" "></textarea>
+                    <label for="message">Your Message</label>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <!--<a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-dribbble"></i></a>-->
+            <a href="#"><i class="fab fa-behance"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p class="copyright">© 2025. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Main JS -->
+    <script>
+      // Fixed cursor implementation 
+document.addEventListener('DOMContentLoaded', () => {
+    // First, ensure the elements exist before trying to access them
+    const cursor = document.querySelector('.cursor');
+    const cursorFollower = document.querySelector('.cursor-follower');
+    
+    // Exit if elements aren't found to prevent errors
+    if (!cursor || !cursorFollower) {
+        console.error('Cursor elements not found');
+        return;
+    }
+    
+    // Set initial positions to prevent flashing/disappearing on page load
+    cursor.style.opacity = '1';
+    cursorFollower.style.opacity = '1';
+    
+    // Handle cursor movement
+    document.addEventListener('mousemove', (e) => {
+        // Use requestAnimationFrame for smoother performance
+        requestAnimationFrame(() => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            // Use transform for smoother following effect
+            cursorFollower.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+        });
+    });
+    
+    // Handle cursor click effects
+    document.addEventListener('mousedown', () => {
+        cursor.classList.add('cursor-down');
+        cursorFollower.classList.add('cursor-down');
+    });
+    
+    document.addEventListener('mouseup', () => {
+        cursor.classList.remove('cursor-down');
+        cursorFollower.classList.remove('cursor-down');
+    });
+    
+    // Handle cursor hover effects for interactive elements
+    const interactiveElements = document.querySelectorAll('a, button, input, select, textarea, [role="button"], .gallery-item');
+    interactiveElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+            cursor.classList.add('cursor-hover');
+            cursorFollower.classList.add('cursor-hover');
+            
+            // Additional styling for gallery items
+            if (element.classList.contains('gallery-item')) {
+                cursor.style.mixBlendMode = 'normal';
+                cursor.style.borderColor = 'var(--neon-green)';
+            }
+        });
+        
+        element.addEventListener('mouseleave', () => {
+            cursor.classList.remove('cursor-hover');
+            cursorFollower.classList.remove('cursor-hover');
+            
+            // Reset additional styling
+            cursor.style.mixBlendMode = 'difference';
+            cursor.style.borderColor = 'var(--neon-pink)';
+        });
+    });
+    
+    // Prevent cursor from disappearing when leaving the window
+    document.addEventListener('mouseleave', () => {
+        cursor.style.opacity = '0';
+        cursorFollower.style.opacity = '0';
+    });
+    
+    document.addEventListener('mouseenter', () => {
+        cursor.style.opacity = '1';
+        cursorFollower.style.opacity = '1';
+    });
+});
+        // Hover effects for interactive elements
+        const links = document.querySelectorAll('a, button');
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                cursor.style.borderColor = 'var(--neon-green)';
+            });
+            
+            link.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursor.style.borderColor = 'var(--neon-pink)';
+            });
+        });
+
+        // Three.js background animation
+        const canvas = document.getElementById('hero-canvas');
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        canvas.appendChild(renderer.domElement);
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 5;
+
+        // Create particles
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 1000;
+        const posArray = new Float32Array(particlesCount * 3);
+
+        for (let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 10;
+        }
+
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+        // Materials
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.02,
+            color: 0xff61d8,
+            transparent: true,
+            blending: THREE.AdditiveBlending
+        });
+
+        // Mesh
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+
+        // Add floating geometric shapes
+        const shapes = [];
+        const colors = [0xff61d8, 0x00b8ff, 0x7df9ff];
+
+        // Create several random geometric shapes
+        for (let i = 0; i < 10; i++) {
+            let geometry;
+            const random = Math.random();
+            
+            if (random < 0.33) {
+                geometry = new THREE.TetrahedronGeometry(0.5, 0);
+            } else if (random < 0.66) {
+                geometry = new THREE.OctahedronGeometry(0.5, 0);
+            } else {
+                geometry = new THREE.IcosahedronGeometry(0.5, 0);
+            }
+            
+            const material = new THREE.MeshBasicMaterial({
+                color: colors[Math.floor(Math.random() * colors.length)],
+                wireframe: true
+            });
+            
+            const shape = new THREE.Mesh(geometry, material);
+            
+            // Position randomly
+            shape.position.x = (Math.random() - 0.5) * 10;
+            shape.position.y = (Math.random() - 0.5) * 10;
+            shape.position.z = (Math.random() - 0.5) * 5;
+            
+            // Random rotation speed
+            shape.rotationSpeed = {
+                x: (Math.random() - 0.5) * 0.01,
+                y: (Math.random() - 0.5) * 0.01,
+                z: (Math.random() - 0.5) * 0.01
+            };
+            
+            shapes.push(shape);
+            scene.add(shape);
+        }
+
+        // Animation loop
+        const animate = () => {
+            requestAnimationFrame(animate);
+            
+            // Rotate particle system
+            particlesMesh.rotation.x += 0.0005;
+            particlesMesh.rotation.y += 0.0005;
+            
+            // Rotate each shape
+            shapes.forEach(shape => {
+                shape.rotation.x += shape.rotationSpeed.x;
+                shape.rotation.y += shape.rotationSpeed.y;
+                shape.rotation.z += shape.rotationSpeed.z;
+            });
+            
+            // Mouse effect on particles
+            particlesMesh.rotation.x += mouse.y * 0.0001;
+            particlesMesh.rotation.y += mouse.x * 0.0001;
+            
+            renderer.render(scene, camera);
+        };
+
+        // Mouse position for interactive background
+        const mouse = {
+            x: 0,
+            y: 0
+        };
+
+        document.addEventListener('mousemove', (event) => {
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form animation
+        const formInputs = document.querySelectorAll('.form-group input, .form-group textarea');
+        
+        formInputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentNode.classList.add('focused');
+            });
+            
+            input.addEventListener('blur', () => {
+                if (input.value === '') {
+                    input.parentNode.classList.remove('focused');
+                }
+            });
+        });
+
+        // Gallery item hover effect
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        galleryItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                cursor.style.mixBlendMode = 'normal';
+                cursor.style.border = '2px solid var(--neon-)';
+            }
+        )
+        }
+    )
